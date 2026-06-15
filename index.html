@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>恐怖のホラー脱出</title>
     <style>
         body{
-            background-color: black;
+            margin:0;
+            font-family: sans-serif;
         }
-    </style>
-</head>   
-<header>
-    {
-        background-color: red;
-    }
- <span style="color: white;">タイトル</span>
- </header>
-<iframe
-width="2000"
-height="315"
-src="https://www.youtube.com/watch?v=2yJgwwDcgV8"
-title="YouTube video player"
-frameborder="0"
-allowfullscreen>
-</iframe>
+        .menu-btn{
+            font-size:30px;
+            padding:10px;
+            cursor:pointer;
+        }
+.sidebar{
+    height:100%;
+    width:0;
+    position:fixed;
+    top:0;
+    left:0;
+    background:#333;
+    overfiow-x:hidden;
+    transition:0.3s;
+    padding-top:60px;
+}
+<button id="menubtn">Ⅲ メニュー</button>
+<div id="menu"class="menu-content">
+    <a href="#">ホーム</a>
+    </div>
