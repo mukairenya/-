@@ -1,75 +1,101 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <title>GLB表示テスト</title>
-  <style>
-    body { margin: 0; overflow: hidden; }
-    canvas { display: block; }
-  </style>
-</head>
-<body>
+<h1>今日の学習予定</h1>
 
-<script type="module">
-import * as THREE from "https://unpkg.com/three@0.126.1/build/three.module.js";
-import { GLTFLoader } from "https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js";
+<table border="1">
+  <tr>
+    <th></th>
+    <th>月曜日</th>
+    <th>火曜日</th>
+    <th>水曜日</th>
+    <th>木曜日</th>
+    <th>金曜日</th>
+  </tr>
 
-// シーン
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x222222);
+  <tr>
+    <td>1限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
 
-// カメラ
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
-camera.position.set(0, 1.5, 3);
+  <tr>
+    <td>2限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
 
-// ライト（超重要）
-scene.add(new THREE.AmbientLight(0xffffff, 1));
+  <tr>
+    <td>3限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
 
-// レンダラー
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+  <tr>
+    <td>4限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
 
-// GLB読み込み
-const loader = new GLTFLoader();
+  <tr>
+    <td>5限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
 
-loader.load(
-  "./b932e601-c66e-4844-8ad8-7de3cb58981e.glb",
-  (gltf) => {
-    const model = gltf.scene;
+  <tr>
+    <td>6限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
+</table>
+<script>
+const lessons = document.querySelectorAll(".lesson");
 
-    model.scale.set(1, 1, 1);
-    model.position.set(0, 0, 0);
+lessons.forEach(cell => {
+  cell.innerHTML = `
+    <select>
+      <option>授業</option>
+      <option>数学</option>
+      <option>英語</option>
+      <option>国語</option>
+      <option>理科</option>
+      <option>社会</option>
+    </select>
 
-    scene.add(model);
+    <select>
+      <option>内容</option>
+      <option>小テスト</option>
+      <option>テスト</option>
+      <option>発表</option>
+      <option>単元テスト</option>
+      <option>期末テスト</option>
+    </select>
 
-    console.log("GLB表示成功");
-  },
-  undefined,
-  (error) => {
-    console.error("GLB読み込み失敗:", error);
-  }
-);
-
-// 描画ループ
-function animate() {
-  requestAnimationFrame(animate);
-  renderer.render(scene, camera);
-}
-animate();
-
-// リサイズ対応
-window.addEventListener("resize", () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+    <select>
+      <option>時間</option>
+      <option>45分</option>
+      <option>50分</option>
+      <option>90分</option>
+    </select>  
+    `;
 });
 </script>
-
-</body>
-</html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
