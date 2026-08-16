@@ -1,0 +1,115 @@
+<h1>今日の学習予定</h1>
+
+<table border="1">
+  <tr>
+    <th></th>
+<th class="monday">月曜日</th>
+<th class="tuesday">火曜日</th>
+<th class="wednesday">水曜日</th>
+<th class="thursday">木曜日</th>
+<th class="friday">金曜日</th>
+  </tr>
+
+  <tr>
+    <td>1限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
+
+  <tr>
+    <td>2限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
+
+  <tr>
+    <td>3限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
+
+  <tr>
+    <td>4限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
+
+  <tr>
+    <td>5限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
+
+  <tr>
+    <td>6限目</td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+    <td class="lesson"></td>
+  </tr>
+</table>
+<script>
+const lessons = document.querySelectorAll(".lesson");
+
+lessons.forEach(cell => {
+  cell.innerHTML = `
+  <h5>
+ <td class="lesson">
+  <input type="checkbox" id="important1">
+  <label for="important1">重要</label>
+  <h5>
+    <select>
+      <option>授業</option>
+      <option>数学Ⅱ</option>
+      <option>英コⅡ</option>
+      <option>論国</option>
+       <option>文探</option>
+      <option>科学</option>
+      <option>歴総</option>
+       <option>美術</option>
+        <option>家庭</option>
+       <option>実習</option>
+       <option>電子</option> 
+       <option>情アド</option> 
+       <option>総合選択</option> 
+       <option>課題研究</option>
+        <option>HR</option>
+    </select>
+
+    <select>
+      <option>内容</option>
+      <option>小テスト</option>
+      <option>テスト</option>
+      <option>発表</option>
+      <option>単元テスト</option>
+      <option>期末テスト</option>
+    </select>
+
+    <select>
+      <option>時間</option>
+      <option>45分</option>
+      <option>50分</option>
+      <option>90分</option>
+    </select>  
+    `;
+});
+</script>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>

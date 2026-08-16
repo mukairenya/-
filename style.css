@@ -1,8 +1,50 @@
- body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    select {
-      margin: 5px;
-      padding: 5px;
-    }
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.input-area {
+  margin-bottom: 15px;
+}
+
+input {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+#error {
+  color: red;
+  font-weight: bold;
+}
+
+/* 一覧全体の枠 */
+#listBox {
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  width: 400px;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+/* 教科ごとの項目 */
+.subject-item {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 80点以上 */
+.high-score {
+  color: blue;
+  font-weight: bold;
+  background-color: #fff3a3;
+  padding: 3px;
+  border-radius: 3px;
+}

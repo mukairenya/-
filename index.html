@@ -1,101 +1,19 @@
-<h1>今日の学習予定</h1>
+<h1>教科別 点数一覧</h1>
 
-<table border="1">
-  <tr>
-    <th></th>
-    <th>月曜日</th>
-    <th>火曜日</th>
-    <th>水曜日</th>
-    <th>木曜日</th>
-    <th>金曜日</th>
-  </tr>
+<div class="input-area">
+  <label for="subject">教科：</label>
+  <input type="text" id="subject" placeholder="教科名を入力">
 
-  <tr>
-    <td>1限目</td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-  </tr>
+  <label for="score">点数：</label>
+  <input type="number" id="score" placeholder="点数を入力">
 
-  <tr>
-    <td>2限目</td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-  </tr>
+  <button id="addButton">追加</button>
+</div>
 
-  <tr>
-    <td>3限目</td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-  </tr>
+<p id="error"></p>
 
-  <tr>
-    <td>4限目</td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-  </tr>
+<h2>一覧</h2>
 
-  <tr>
-    <td>5限目</td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-  </tr>
-
-  <tr>
-    <td>6限目</td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-    <td class="lesson"></td>
-  </tr>
-</table>
-<script>
-const lessons = document.querySelectorAll(".lesson");
-
-lessons.forEach(cell => {
-  cell.innerHTML = `
-    <select>
-      <option>授業</option>
-      <option>数学</option>
-      <option>英語</option>
-      <option>国語</option>
-      <option>理科</option>
-      <option>社会</option>
-    </select>
-
-    <select>
-      <option>内容</option>
-      <option>小テスト</option>
-      <option>テスト</option>
-      <option>発表</option>
-      <option>単元テスト</option>
-      <option>期末テスト</option>
-    </select>
-
-    <select>
-      <option>時間</option>
-      <option>45分</option>
-      <option>50分</option>
-      <option>90分</option>
-    </select>  
-    `;
-});
-</script>
-<head>
-    <link rel="stylesheet" href="style.css">
-</head>
+<div id="listBox">
+  <ul id="scoreList"></ul>
+</div>
