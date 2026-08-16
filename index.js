@@ -1,101 +1,123 @@
-const subjectInput = document.getElementById("subject");
-const scoreInput = document.getElementById("score");
+const subjectInput = document.getElementById("subjectInput");
+const scoreInput = document.getElementById("scoreInput");
 const addButton = document.getElementById("addButton");
-const error = document.getElementById("error");
-const scoreList = document.getElementById("scoreList");
+const scoreTable = document.getElementById("scoreTable");
+const errorMessage = document.getElementById("errorMessage");
 
-addButton.addEventListener("click", function() {
+const subjects = {};
+
+addButton.addEventListener("click", function () {
 
   const subject = subjectInput.value.trim();
-  const scoreText = scoreInput.value;
-
-  // 点数を数値にする
+  const scoreText = scoreInput.value.trim();
   const score = Number(scoreText);
 
-  // エラーチェック
-  if (
-    subject === "" ||
-    scoreText === "" ||
-    score < 0 ||
-    score > 100 ||
-    !Number.isInteger(score)
-  ) {
-    error.textContent =
-      "教科名と0～100の整数を入力してください。";
+  errorMessage.textContent = "";
+
+  // 教科名が空欄
+  if (subject === "") {
+    errorMessage.textContent =
+      "エラー：教科名を入力してください。";
 
     subjectInput.value = "";
     scoreInput.value = "";
-
     return;
   }
 
-  // エラーを消す
-  error.textContent = "";
+  // 点数が空欄
+  if (scoreText === "") {
+    errorMessage.textContent =
+      "エラー：点数を入力してください。";
 
-  // 同じ教科があるか調べる
-  const items = document.querySelectorAll(".subject-item");
+    subjectInput.value = "";
+    scoreInput.value = "";
+    return;
+  }
 
-  for (let i = 0; i < items.length; i++) {
+  // 点数が0～100の範囲外
+  if (
+    !Number.isInteger(score) ||
+    score < 0 ||
+    score > 100
+  ) {
+    errorMessage.textContent =
+      "エラー：点数は0点以上100点以下で入力してください。";
 
-    if (items[i].dataset.subject === subject) {
+    subjectInput.value = "";
+    scoreInput.value = "";
+    return;
+  }
 
-      const scores = items[i].querySelector(".scores");
 
-      const newScore = document.createElement("span");
-      newScore.textContent = score + "点";
+  // 新しい教科なら列を作る
+  if (!subjects[subject]) {
 
-      // 80点以上ならhigh-score
-      if (score >= 80) {
-        newScore.classList.add("high-score");
-      }
+    subjects[subject] = {
+      column: Object.keys(subjects).length,
+      scores: []
+    };
 
-      // 区切り
-      scores.appendChild(document.createTextNode("、"));
+    if (scoreTable.rows.length === 0) {
+      scoreTable.insertRow();
+    }
 
-      // 点数を追加
-      scores.appendChild(newScore);
-
-      subjectInput.value = "";
-      scoreInput.value = "";
-
-      return;
+    for (const row of scoreTable.rows) {
+      row.insertCell();
+      row.insertCell();
     }
   }
 
-  // 同じ教科がなかった場合、新しく作る
-  const item = document.createElement("li");
 
-  item.classList.add("subject-item");
+  const data = subjects[subject];
+  const rowNumber = data.scores.length;
 
-  // 教科名を保存
-  item.dataset.subject = subject;
 
-  // 教科名
-  const subjectName = document.createElement("strong");
-  subjectName.textContent = subject + "：";
+  // 必要な行を作る
+  while (scoreTable.rows.length <= rowNumber) {
 
-  // 点数を入れる場所
-  const scores = document.createElement("span");
-  scores.classList.add("scores");
+    const row = scoreTable.insertRow();
 
-  // 点数
-  const newScore = document.createElement("span");
-  newScore.textContent = score + "点";
-
-  // 80点以上ならhigh-score
-  if (score >= 80) {
-    newScore.classList.add("high-score");
+    for (
+      let i = 0;
+      i < Object.keys(subjects).length * 2;
+      i++
+    ) {
+      row.insertCell();
+    }
   }
 
-  scores.appendChild(newScore);
 
-  item.appendChild(subjectName);
-  item.appendChild(scores);
+  const row = scoreTable.rows[rowNumber];
 
-  // 一覧に追加
-  scoreList.appendChild(item);
+
+  // 教科
+  const subjectCell = row.cells[data.column * 2];
+
+  subjectCell.textContent = subject;
+  subjectCell.classList.add("subject");
+
+
+  // 点数
+  const scoreCell = row.cells[data.column * 2 + 1];
+
+  scoreCell.textContent = score;
+  scoreCell.classList.add("score");
+
+
+  // 80点以上なら黄色
+  if (score >= 80) {
+    scoreCell.classList.add("high-score");
+  }
+
+
+  // 点数を保存
+  data.scores.push(score);
+
 
   // 入力欄を空にする
   subjectInput.value = "";
   scoreInput.value = "";
+
+  subjectInput.focus();
+
 });

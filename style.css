@@ -1,50 +1,84 @@
 body {
-  font-family: sans-serif;
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background: #f5f5f5;
+}
+
+/* 入力部分 */
+.input-area,
+.input-box {
+  display: flex;
+  align-items: center;
 }
 
 .input-area {
-  margin-bottom: 15px;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
-input {
+.input-box {
+  gap: 5px;
+}
+
+.input-box input {
+  width: 160px;
   padding: 8px;
-  margin-right: 10px;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
 }
 
-button {
-  padding: 8px 20px;
+/* 追加ボタン */
+#addButton {
+  padding: 9px 25px;
+  border: 0;
+  border-radius: 4px;
+  background: #4a90e2;
+  color: white;
   cursor: pointer;
 }
 
-#error {
+#addButton:hover {
+  background: #357abd;
+}
+
+/* エラー */
+#errorMessage {
   color: red;
   font-weight: bold;
 }
 
-/* 一覧全体の枠 */
-#listBox {
-  border: 2px solid #333;
-  border-radius: 8px;
-  padding: 15px;
-  width: 400px;
-  min-height: 100px;
-  box-sizing: border-box;
+/* 表 */
+.score-table {
+  border-collapse: collapse;
+  background: white;
 }
 
-/* 教科ごとの項目 */
-.subject-item {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.score-table td {
+  width: 100px;
+  height: 45px;
+  border: 1px solid #999;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* 教科 */
+.score-table .subject {
+  background: #e8e8e8;
+  font-weight: bold;
 }
 
 /* 80点以上 */
-.high-score {
-  color: blue;
-  font-weight: bold;
-  background-color: #fff3a3;
-  padding: 3px;
-  border-radius: 3px;
+.score-table .high-score {
+  background: #fff9c4 !important;
+}
+/* 点数入力欄の上下矢印を消す */
+#scoreInput::-webkit-inner-spin-button,
+#scoreInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#scoreInput {
+  -moz-appearance: textfield;
 }

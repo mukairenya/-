@@ -1,19 +1,39 @@
-<h1>教科別 点数一覧</h1>
+<!DOCTYPE html>
+<html lang="ja">
 
-<div class="input-area">
-  <label for="subject">教科：</label>
-  <input type="text" id="subject" placeholder="教科名を入力">
+<head>
+  <meta charset="UTF-8">
+  <title>得点メモ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-  <label for="score">点数：</label>
-  <input type="number" id="score" placeholder="点数を入力">
+<body>
 
-  <button id="addButton">追加</button>
-</div>
+  <h1>得点メモ</h1>
 
-<p id="error"></p>
+  <div class="input-area">
 
-<h2>一覧</h2>
+    <div class="input-box">
+      <label>教科：
+      <input type="text" id="subjectInput" placeholder="教科名を入力">
+    </div>
+</label>
+    <div class="input-box">
+      <label>点数：
+      <input type="number" id="scoreInput" placeholder="点数を入力">
+    </div>
+  </label>
+    <button id="addButton">追加</button>
 
-<div id="listBox">
-  <ul id="scoreList"></ul>
-</div>
+    <p id="errorMessage"></p>
+
+  </div>
+
+  <table class="score-table">
+    <tbody id="scoreTable"></tbody>
+  </table>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
